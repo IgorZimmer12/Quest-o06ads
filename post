@@ -1,0 +1,11 @@
+[HttpPost]
+public async Task<IActionResult> Create(Cliente cliente)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(cliente);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(cliente);
+        }
